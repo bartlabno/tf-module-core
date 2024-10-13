@@ -41,8 +41,8 @@ module "vpc" {
   default_network_acl_egress  = [local.deny_nacl_rule]
   default_network_acl_name    = "nacl-${local.suffix}"
   default_network_acl_tags = {
-      Notes = "Default NACL for vpc-${local.suffix}, which denies all access. Do not use it."
-    }
+    Notes = "Default NACL for vpc-${local.suffix}, which denies all access. Do not use it."
+  }
 
   # NACLs
   public_dedicated_network_acl = true
