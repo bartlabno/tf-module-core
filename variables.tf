@@ -78,3 +78,10 @@ variable "elasticache_access_ports" {
   description = "Port(s) to allow from private subnets to Elasticache subnets (if present) (via NACLs). Defaults to 11211 (Memcached)."
   default     = [11211]
 }
+
+# Create bastion
+variable "create_bastion_host" {
+  type        = bool
+  description = "Create a bastion host for environment"
+  default     = false
+}
