@@ -26,12 +26,6 @@ resource "aws_iam_instance_profile" "bastion_ec2_profile" {
   count = var.create_bastion_host ? 1 : 0
 }
 
-resource "aws_iam_role_policy_attachment" "bastion_pol_attach" {
-  role       = aws_iam_role.bastion_ec2[0].id
-  policy_arn = "arn:aws:iam::aws:policy/AmazonSSMManagedInstanceCore"
-  count      = var.create_bastion_host ? 1 : 0
-}
-
 resource "aws_iam_role_policy_attachment" "ssm_pol_attach" {
   role       = aws_iam_role.bastion_ec2[0].id
   policy_arn = "arn:aws:iam::aws:policy/service-role/AmazonSSMManagedInstanceCore"
