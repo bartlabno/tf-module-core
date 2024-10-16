@@ -16,6 +16,9 @@ I highly recommend to use separate module from your application layer to manage 
 - VPC endpoints
 - AWS SES
 
+### Variables
+- `create_bastion_host`: If set to true (defaults to false), an EC2 bastion host is created, with useful tools installed. Access is via AWS Systems Manager (SSM) (not SSH). The Bastion host is created in a private subnet, with access to the DB and Elasticache subnets (if created), as well as full internet access. Note that if you create this, don't turn off enable_nat_gateway or the instance will not be able to download packages to configure itself, so you won't be able to connect to it.
+
 ### VPC related variables
 - `cidr`: the CIDR for the VPC. This should be unique. A /16 is recommended.
 - `private_subnets`, `public_subnets`, `database_subnets`, `elasticache_subnets`: CIDRs for each type of subnet. Must all be within cidr, and should be at least one per AZ in the region. May be omitted, in which case that kind of subnet won't be created. /24 or larger is strongly recommended (consider future use, as it is painful to add more IP space later). For understandability, aim to keep subnets of each type contiguous, and leave gaps for future expansion between the different types.
